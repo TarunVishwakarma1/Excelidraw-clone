@@ -7,7 +7,7 @@ import { prismaClient } from "@repo/db/client";
 
 const app = express();
 
-app.post("/signup", (req, res) => {
+app.post("/signup", async(req, res) => {
 
     const parsedData = CreateUserSchema.safeParse(req.body);
     if (!parsedData.success) {
@@ -16,16 +16,22 @@ app.post("/signup", (req, res) => {
         })
         return;
     }
-    prismaClient.user.create({
-        data:{
-            email:parsedData.data.username,
-            password:parsedData.data.password,
-            name:parsedData.data.name
-        }
-    });
-    res.json({
-        userId: "123"
-    })
+    try {
+        await prismaClient.user.create({
+            data:{
+                email:parsedData.data.username,
+                password:parsedData.data.password,
+                name:parsedData.data.name
+            }
+        });
+        res.json({
+            userId: "123"
+        })
+    } catch (error) {
+        res.status(411).json({
+            message:"error"
+        })
+    }
 })
 
 app.post("/signin", (req, res) => {
