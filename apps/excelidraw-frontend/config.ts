@@ -1,0 +1,3 @@
+export const HTTP_BACKEND = "http://localhost:3001"
+export const WS_URL = "ws://localhost:8080"
+export const HARD_CODE_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YTAzMzQ2NS03MTg4LTQ5YzAtYTU3ZS1mN2Y4NTFiNjM1NzEiLCJpYXQiOjE3Mzc0ODQzMDh9.W73tqRfoSx0PJ24F5EgzTpOb6kfMj9IBxXgo9dM1d0I"
